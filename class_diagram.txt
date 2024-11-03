@@ -1,0 +1,41 @@
+---
+title: Sensor
+---
+classDiagram
+    note "Sensors in Smarthome"
+    
+    Sensor-->OnUpdateListener
+    Sensor-->SensorUpdateEvent
+    Sensor--|>ControlableSensor
+    OnUpdateListener-->SensorUpdateEvent
+    ClimateSensor--|>Sensor
+    
+    class Sensor {
+     <<abstract>>
+      +description() String
+      +addListener(OnUpdateListener listener)*
+      +removeListener(OnUpdateListener listener)*
+    }
+    class ClimateSensor {
+      +description() String
+      +addListener(OnUpdateListener listener)
+      +removeListener(OnUpdateListener listener)
+      +activate()
+      +deactivate()
+    }
+    class OnUpdateListener {
+      <<interface>>
+     +inform(SensorUpdateEvent event)
+    }
+    class ControlableSensor {
+      <<interface>>
+      +activate()
+      +deactivate()
+    }
+    class SensorUpdateEvent {
+     +sensor(): Sensor
+    }
+
+
+
+  
