@@ -4,9 +4,9 @@ title: Sensor
 classDiagram
     note "Sensors in Smarthome"
     
-    Sensor-->OnUpdateListener
+    Sensor..>OnUpdateListener
     Sensor-->SensorUpdateEvent
-    Sensor--|>ControlableSensor
+    Sensor..|>ControlableSensor
     OnUpdateListener-->SensorUpdateEvent
     ClimateSensor--|>Sensor
     
@@ -15,13 +15,16 @@ classDiagram
       +description() String
       +addListener(OnUpdateListener listener)*
       +removeListener(OnUpdateListener listener)*
+      +friendlyName() String
+      +batteryStatus() float
     }
     class ClimateSensor {
-      +description() String
-      +addListener(OnUpdateListener listener)
-      +removeListener(OnUpdateListener listener)
-      +activate()
-      +deactivate()
+      String friendlyName
+      float currentTemperature
+      float currentHumidity
+      float batteryStatus
+      +humidity(): float
+      +temperature(): float
     }
     class OnUpdateListener {
       <<interface>>
@@ -35,7 +38,6 @@ classDiagram
     class SensorUpdateEvent {
      +sensor(): Sensor
     }
-
 
 
   
