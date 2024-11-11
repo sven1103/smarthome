@@ -1,0 +1,22 @@
+### Example config file for smart home app devices
+#
+# Supported types are: 'sensor'
+# Supported categories are: 'temp_humid'
+#
+#######
+# Define the URL of your MQTT broker
+broker_url: tcp://mqtt-broker.io:1883
+# Define a semantic client id for the MQTT broker
+client_id: "smarthome-app"
+# Define the message queue root topic, e.g. "zigbee2mqtt", which will build topics later like
+# "/zigbee2mqtt/<friendly_name_device>".
+topic_root: zigbee2mqtt
+# List one or more devices of different types
+devices:
+  - type: sensor
+    category: temp_humid
+    friendly_name: living_room/temperature_1
+  # More devices can be easily added like this:
+  - type: sensor
+    category: temp_humid
+    friendly_name: bathroom/temperature_1
