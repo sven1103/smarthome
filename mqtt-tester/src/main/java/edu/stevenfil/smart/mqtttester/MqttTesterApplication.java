@@ -40,9 +40,11 @@ public class MqttTesterApplication {
         }
       });
 
+
       var topic = "zigbee2mqtt/living_room/humidity_temperature";
 
       client.subscribe(topic, 0);
+
 
       while (true) {
         try {

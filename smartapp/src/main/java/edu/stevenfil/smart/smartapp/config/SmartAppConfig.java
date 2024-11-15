@@ -27,9 +27,9 @@ import org.springframework.stereotype.Component;
  * @since <version tag>
  */
 @Component
-public class AppConfig {
+public class SmartAppConfig {
 
-  private static final Logger log = getLogger(AppConfig.class);
+  private static final Logger log = getLogger(SmartAppConfig.class);
   private static final String PROPERTY_DEVICES = "devices";
   private static final String PROPERTY_ROOT_TOPIC = "topic_root";
   private static final String PROPERTY_BROKER_URL = "broker_url";
@@ -37,13 +37,13 @@ public class AppConfig {
   private final List<Device> devices = new ArrayList<>();
   private MqttConfig mqttConfig;
 
-  protected AppConfig(List<Device> devices, MqttConfig mqttConfig) {
+  protected SmartAppConfig(List<Device> devices, MqttConfig mqttConfig) {
     this.devices.addAll(devices);
     this.mqttConfig = mqttConfig;
   }
 
   @Autowired
-  public AppConfig(@Value("${smarthome.config.path}") String configPath) {
+  public SmartAppConfig(@Value("${smarthome.config.path}") String configPath) {
     log.info("Loading config from '{}'", configPath);
 
     try {
@@ -59,13 +59,21 @@ public class AppConfig {
     log.info("Loaded mqttConfig '{}'", mqttConfig);
   }
 
-  private static AppConfig readConfig(Path configPath) throws IOException {
+  public MqttConfig mqttConfig() {
+    return mqttConfig;
+  }
+
+  public List<Device> devices() {
+    return devices;
+  }
+
+  private static SmartAppConfig readConfig(Path configPath) throws IOException {
     var content = Files.readString(configPath);
     var mapper = setupMapper();
     var tree = mapper.readTree(content);
     var devices = loadDevices(mapper, tree, PROPERTY_DEVICES);
     var mqttConfig = loadMqttConfig(mapper, tree);
-    return new AppConfig(devices, mqttConfig);
+    return new SmartAppConfig(devices, mqttConfig);
   }
 
   private static ObjectMapper setupMapper() {

@@ -1,6 +1,5 @@
 package edu.stevenfil.smart.smartapp.config;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
@@ -33,6 +32,18 @@ public class Device {
     Device device = (Device) o;
     return Objects.equals(category, device.category) && Objects.equals(type,
         device.type) && Objects.equals(friendlyName, device.friendlyName);
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public String getFriendlyName() {
+    return friendlyName;
   }
 
   @Override

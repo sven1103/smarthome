@@ -1,0 +1,105 @@
+:root {
+  --smarthome-color-bright-font: #d5d5d5;
+  --smarthome-color-bright-svg: #d5d5d5;
+  --smarthome-color-bright-border: #d5d5d5;
+  --smarthome-color-background-dark: #121212;
+  --smarthome-color-blue-font: #53d9ff;
+  --smarthome-color-green-svg: #5cb85c;
+  --smarthome-color-red-svg: #b51313;
+}
+
+body {
+  font-family: Open Sans, sans-serif;
+  background-color: var(--smarthome-color-background-dark);
+}
+
+.border-m {
+  border-width: 0.1rem;
+  border-style: solid;
+}
+
+.border-rounded-m {
+  border-radius: 2rem;
+}
+
+.border-color-bright {
+  border-color: var(--smarthome-color-bright-border) !important;
+}
+
+.content-centered {
+  justify-content: center;
+}
+.align-items-baseline {
+  align-items: baseline;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-horizontal {
+  flex-direction: row;
+}
+
+.flex-vertical {
+  flex-direction: column;
+}
+
+.font-size-l {
+  font-size: 2rem;
+}
+
+.font-size-xl {
+  font-size: 5rem;
+}
+
+.gap-s {
+  gap: 0.5rem;
+}
+
+.gap-m {
+  gap: 1rem;
+}
+
+.image-size-s {
+  width: 1rem;
+  height: 1rem;
+}
+
+.max-width-20rem {
+  max-width: 20rem;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.left-column .right-column {
+  flex: 1;
+}
+
+.main-column {
+  width: 800px;
+}
+
+.font-color-blue {
+  color: var(--smarthome-color-blue-font);
+}
+
+.svg-color-bright {
+  color: var(--smarthome-color-bright-border);
+}
+
+.svg-color-red {
+  color: var(--smarthome-color-red-svg);
+}
+
+.svg-color-green {
+  color: var(--smarthome-color-green-svg);
+}

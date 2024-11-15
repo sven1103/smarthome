@@ -16,7 +16,9 @@ devices:
   - type: sensor
     category: temp_humid
     friendly_name: living_room/temperature_1
+    location: living room
   # More devices can be easily added like this:
   - type: sensor
     category: temp_humid
     friendly_name: bathroom/temperature_1
+    location: kitchen

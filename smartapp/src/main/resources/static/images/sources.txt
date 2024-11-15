@@ -1,0 +1,14 @@
+arrow-trend-down-svgrepo-com.svg
+> https://www.svgrepo.com/svg/535165/arrow-trend-down
+
+arrow-trend-up-svgrepo-com.svg
+> https://www.svgrepo.com/svg/535172/arrow-trend-up
+
+circle-svgrepo-com.svg
+> https://www.svgrepo.com/svg/535262/circle
+
+caret-up-svgrepo-com.svg
+> https://www.svgrepo.com/svg/535254/caret-up
+
+caret-down-svgrepo-com.svg
+> https://www.svgrepo.com/svg/535251/caret-down
