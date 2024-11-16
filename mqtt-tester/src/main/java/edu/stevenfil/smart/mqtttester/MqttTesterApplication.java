@@ -45,7 +45,6 @@ public class MqttTesterApplication {
 
       client.subscribe(topic, 0);
 
-
       while (true) {
         try {
           Thread.sleep(100);
@@ -54,8 +53,6 @@ public class MqttTesterApplication {
         }
       }
     }
-
-
 
   }
 
