@@ -20,6 +20,8 @@ public class Sensor {
 
   private OnUpdateAction action;
 
+  private String location;
+
   public Sensor() {
     this("", Float.NaN, "", new DefaultUpdateAction());
   }
@@ -55,8 +57,20 @@ public class Sensor {
     return Optional.of(batteryStatus);
   }
 
+  public String getLocation() {
+    return location;
+  }
+
+  public void setLocation(String location) {
+    this.location = location;
+  }
+
   public String getFriendlyName() {
     return friendlyName;
+  }
+
+  public void setFriendlyName(String friendlyName) {
+    this.friendlyName = friendlyName;
   }
 
   public void setOnUpdateAction(OnUpdateAction action) {

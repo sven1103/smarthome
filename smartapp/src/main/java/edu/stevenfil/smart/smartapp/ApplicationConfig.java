@@ -39,6 +39,8 @@ public class ApplicationConfig {
   public List<ClimateSensor> climateSensors(SmartAppConfig smartAppConfig, SmartAppClient smartAppClient) {
     var device = smartAppConfig.devices().stream().findFirst().get();
     var climateSensor = new ClimateSensor();
+    climateSensor.setLocation(device.getLocation());
+    climateSensor.setFriendlyName(device.getFriendlyName());
     var mapper = new ClimateSensorMapper(device.getFriendlyName(), climateSensor, (String message) -> {
       ObjectMapper objectMapper = new ObjectMapper();
       try {

@@ -1,5 +1,6 @@
 :root {
   --smarthome-color-bright-font: #d5d5d5;
+  --smarthome-color-dark-font: #878787;
   --smarthome-color-bright-svg: #d5d5d5;
   --smarthome-color-bright-border: #d5d5d5;
   --smarthome-color-background-dark: #121212;
@@ -32,6 +33,27 @@ body {
 .align-items-baseline {
   align-items: baseline;
 }
+
+.display-item-small {
+  max-width: 20rem ;
+}
+
+.display-title {
+  color: var(--smarthome-color-dark-font);
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.2rem;
+}
+
+.display-footer {
+  color: var(--smarthome-color-dark-font);
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.2rem;
+}
+
+
 
 .flex {
   display: flex;
@@ -70,22 +92,46 @@ body {
   height: 1rem;
 }
 
-.max-width-20rem {
-  max-width: 20rem;
-}
-
 .main {
   display: flex;
   justify-content: center;
   padding: 1rem;
 }
 
-.left-column .right-column {
-  flex: 1;
+.max-width-20rem {
+  max-width: 20rem;
 }
 
 .main-column {
+
   width: 800px;
+}
+
+.left-column, .right-column {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+
+  .main {
+    flex-direction: column;
+    justify-content: center; /* Centers the child horizontally */
+    align-items: center; /* Centers the child vertically */
+  }
+
+  .left-column, .right-column  {
+    display: none; /* Hide the left and right columns */
+  }
+
+  .main-column {
+    display: flex;
+    max-width: 100%; /* Use the full width on smaller screens */
+    justify-content: center;
+  }
+
+  .display-item-small {
+    max-width: 80% ;
+  }
 }
 
 .font-color-blue {

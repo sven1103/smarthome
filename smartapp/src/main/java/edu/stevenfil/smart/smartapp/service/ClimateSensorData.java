@@ -8,6 +8,6 @@ package edu.stevenfil.smart.smartapp.service;
  * @since <version tag>
  */
 public record ClimateSensorData(String friendlyName, float temperature, float humidity,
-                                float battery, String trendTemperature, String trendHumidity) {
+                                float battery, String trendTemperature, String trendHumidity, String location) {
 
 }

@@ -25,7 +25,7 @@ public class ClimateSensorDeviceService {
   private static ClimateSensorData convert(ClimateSensor sensor) {
     return new ClimateSensorData(sensor.getFriendlyName(), sensor.temperature().orElse(Float.NaN),
         sensor.humidity().orElse(Float.NaN), sensor.getBatteryStatus().orElse(Float.NaN),
-        sensor.trendTemperature(), sensor.trendHumidity());
+        sensor.trendTemperature(), sensor.trendHumidity(), sensor.getLocation());
   }
 
   public List<ClimateSensorData> queryAllSensors() {

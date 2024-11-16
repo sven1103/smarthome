@@ -2,6 +2,7 @@ package edu.stevenfil.smart.smartapp.frontend;
 
 import com.vaadin.flow.component.Svg;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.data.binder.Binder;
 import edu.stevenfil.smart.smartapp.service.ClimateSensorData;
 import org.slf4j.Logger;
@@ -25,13 +26,36 @@ public class SimpleClimateSensorDisplay extends Div {
   private Div temperatureContainer;
   private Div humidityContainer;
 
+  private Div displayTitle;
+  private Div displayContent;
+  private Div displayFooter;
+
   public SimpleClimateSensorDisplay(ClimateSensorData sensorData) {
     addClassName("gap-m");
     addClassName("border-m");
     addClassName("border-rounded-m");
     addClassName("border-color-bright");
-    addClassName("max-width-20rem");
     addClassNames("flex", "flex-vertical", "flex-grow");
+    addClassName("display-item-small");
+
+    displayTitle = new Div();
+    displayTitle.addClassName("display-title");
+
+    displayContent = new Div();
+    displayContent.addClassName("display-content");
+
+    displayFooter = new Div();
+    displayFooter.addClassName("display-footer");
+
+    add(displayTitle, displayContent, displayFooter);
+
+    var title = new Span("Display Title");
+    displayTitle.add(title);
+
+    var dynamicTitle = new DynamicStringValue(title);
+
+    var updatedSince = new Span("Updated Since");
+    displayFooter.add(updatedSince);
 
     var trendTemp = new Svg(getClass().getResourceAsStream("/static/images/circle-svgrepo-com.svg"));
     trendTemp.addClassName("image-size-s");
@@ -53,10 +77,12 @@ public class SimpleClimateSensorDisplay extends Div {
     temperatureValue = new DynamicFloatValue(temperature);
     humidityValue = new DynamicFloatValue(humidity);
 
-    add(temperatureContainer, humidityContainer);
+    displayContent.add(temperatureContainer, humidityContainer);
+
     binder = new Binder<>(ClimateSensorData.class);
     binder.forField(temperatureValue).bindReadOnly(ClimateSensorData::temperature);
     binder.forField(humidityValue).bindReadOnly(ClimateSensorData::humidity);
+    binder.forField(dynamicTitle).bindReadOnly(ClimateSensorData::location);
     binder.forField(trendContainerTemp).bindReadOnly(ClimateSensorData::trendTemperature);
     binder.forField(trendContainerHumidity).bindReadOnly(ClimateSensorData::trendHumidity);
     update(sensorData);

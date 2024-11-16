@@ -2,7 +2,6 @@ package edu.stevenfil.smart.smartapp.mqtt.mapper;
 
 import static org.apache.logging.log4j.LogManager.getLogger;
 
-import com.vaadin.flow.component.notification.Notification;
 import edu.stevenfil.smart.smartapp.device.sensor.climate.ClimateSensor;
 import edu.stevenfil.smart.smartapp.exceptions.SmarthomeException;
 import edu.stevenfil.smart.smartapp.mqtt.MessageParsingStrategy;

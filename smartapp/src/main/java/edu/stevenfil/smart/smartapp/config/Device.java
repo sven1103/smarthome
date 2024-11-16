@@ -21,6 +21,9 @@ public class Device {
   @JsonProperty("friendly_name")
   String friendlyName;
 
+  @JsonProperty("location")
+  String location;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -36,6 +39,10 @@ public class Device {
 
   public String getCategory() {
     return category;
+  }
+
+  public String getLocation() {
+    return location;
   }
 
   public String getType() {
