@@ -1,6 +1,7 @@
 package edu.stevenfil.smart.smartapp.service;
 
 import edu.stevenfil.smart.smartapp.device.sensor.climate.ClimateSensor;
+import java.time.Instant;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class ClimateSensorDeviceService {
   private static ClimateSensorData convert(ClimateSensor sensor) {
     return new ClimateSensorData(sensor.getFriendlyName(), sensor.temperature().orElse(Float.NaN),
         sensor.humidity().orElse(Float.NaN), sensor.getBatteryStatus().orElse(Float.NaN),
-        sensor.trendTemperature(), sensor.trendHumidity(), sensor.getLocation());
+        sensor.trendTemperature(), sensor.trendHumidity(), sensor.getLocation(), sensor.getLastUpdate().orElse(null));
   }
 
   public List<ClimateSensorData> queryAllSensors() {

@@ -1,5 +1,8 @@
 package edu.stevenfil.smart.smartapp.service;
 
+import java.time.Instant;
+import java.util.Optional;
+
 /**
  * <b><class short description - 1 Line!></b>
  *
@@ -8,6 +11,10 @@ package edu.stevenfil.smart.smartapp.service;
  * @since <version tag>
  */
 public record ClimateSensorData(String friendlyName, float temperature, float humidity,
-                                float battery, String trendTemperature, String trendHumidity, String location) {
+                                float battery, String trendTemperature, String trendHumidity, String location, Instant updatedAt) {
+
+  public Optional<Instant> getUpdatedAt() {
+    return Optional.ofNullable(updatedAt);
+  }
 
 }

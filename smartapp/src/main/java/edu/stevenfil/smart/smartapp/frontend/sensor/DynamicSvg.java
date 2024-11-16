@@ -1,8 +1,7 @@
-package edu.stevenfil.smart.smartapp.frontend;
+package edu.stevenfil.smart.smartapp.frontend.sensor;
 
 import com.vaadin.flow.component.Svg;
 import com.vaadin.flow.component.customfield.CustomField;
-import com.vaadin.flow.component.html.Image;
 import java.util.Objects;
 
 /**

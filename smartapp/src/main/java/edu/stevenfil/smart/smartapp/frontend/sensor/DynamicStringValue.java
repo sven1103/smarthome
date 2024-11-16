@@ -1,4 +1,4 @@
-package edu.stevenfil.smart.smartapp.frontend;
+package edu.stevenfil.smart.smartapp.frontend.sensor;
 
 import com.vaadin.flow.component.HtmlContainer;
 import com.vaadin.flow.component.customfield.CustomField;

@@ -1,5 +1,6 @@
 package edu.stevenfil.smart.smartapp.device.sensor;
 
+import java.time.Instant;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -22,11 +23,14 @@ public class Sensor {
 
   private String location;
 
+  private Instant lastUpdate;
+
   public Sensor() {
     this("", Float.NaN, "", new DefaultUpdateAction());
   }
 
-  public Sensor(String description, float batteryStatus, String friendlyName, OnUpdateAction action) {
+  public Sensor(String description, float batteryStatus, String friendlyName,
+      OnUpdateAction action) {
     this.description = description;
     this.batteryStatus = batteryStatus;
     this.friendlyName = friendlyName;
@@ -38,16 +42,16 @@ public class Sensor {
     update();
   }
 
+  /**
+   * Calls {@link OnUpdateAction#execute()} on the registered action.
+   */
   protected void update() {
+    lastUpdate = Instant.now();
     action.execute();
   }
 
   public String getDescription() {
     return description;
-  }
-
-  public void setBatteryStatus(float batteryStatus) {
-    this.batteryStatus = batteryStatus;
   }
 
   public Optional<Float> getBatteryStatus() {
@@ -57,12 +61,18 @@ public class Sensor {
     return Optional.of(batteryStatus);
   }
 
+  public void setBatteryStatus(float batteryStatus) {
+    this.batteryStatus = batteryStatus;
+    update();
+  }
+
   public String getLocation() {
     return location;
   }
 
   public void setLocation(String location) {
     this.location = location;
+    update();
   }
 
   public String getFriendlyName() {
@@ -71,6 +81,11 @@ public class Sensor {
 
   public void setFriendlyName(String friendlyName) {
     this.friendlyName = friendlyName;
+    update();
+  }
+
+  public Optional<Instant> getLastUpdate() {
+    return Optional.ofNullable(lastUpdate);
   }
 
   public void setOnUpdateAction(OnUpdateAction action) {

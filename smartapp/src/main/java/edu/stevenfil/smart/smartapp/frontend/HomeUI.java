@@ -3,6 +3,7 @@ package edu.stevenfil.smart.smartapp.frontend;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.Route;
+import edu.stevenfil.smart.smartapp.frontend.sensor.SimpleClimateSensorDisplay;
 import edu.stevenfil.smart.smartapp.service.ClimateSensorData;
 import edu.stevenfil.smart.smartapp.service.ClimateSensorDeviceService;
 import java.util.Collection;
@@ -33,14 +34,11 @@ public class HomeUI extends Div {
 
     add(leftColumn, mainColumn, rightColumn);
 
-    UI.getCurrent().setPollInterval(400);
+    UI.getCurrent().setPollInterval(1000);
 
     setSensorData(service.queryAllSensors());
 
-    UI.getCurrent().addPollListener(listener -> {
-      System.out.println("Polling for sensors");
-      setSensorData(service.queryAllSensors());
-    });
+    UI.getCurrent().addPollListener(listener -> setSensorData(service.queryAllSensors()));
   }
 
   void setSensorData(Collection<ClimateSensorData> sensors) {

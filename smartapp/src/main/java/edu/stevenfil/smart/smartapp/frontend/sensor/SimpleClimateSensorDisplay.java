@@ -1,4 +1,4 @@
-package edu.stevenfil.smart.smartapp.frontend;
+package edu.stevenfil.smart.smartapp.frontend.sensor;
 
 import com.vaadin.flow.component.Svg;
 import com.vaadin.flow.component.html.Div;
@@ -54,9 +54,6 @@ public class SimpleClimateSensorDisplay extends Div {
 
     var dynamicTitle = new DynamicStringValue(title);
 
-    var updatedSince = new Span("Updated Since");
-    displayFooter.add(updatedSince);
-
     var trendTemp = new Svg(getClass().getResourceAsStream("/static/images/circle-svgrepo-com.svg"));
     trendTemp.addClassName("image-size-s");
     trendTemp.addClassName("svg-color-bright");
@@ -64,6 +61,10 @@ public class SimpleClimateSensorDisplay extends Div {
     var trendHumidity = new Svg(getClass().getResourceAsStream("/static/images/circle-svgrepo-com.svg"));
     trendHumidity.addClassName("image-size-s");
     trendHumidity.addClassName("svg-color-bright");
+
+    var timePassed = new Span("");
+    var dynamicTimePassed = new DynamicTimePassedValue(timePassed);
+    displayFooter.add(timePassed);
 
     var temperature = DisplayValue.createNaN();
     temperatureContainer = new DisplayValueWithUnit(temperature, new DisplayUnit("°C"), trendTemp);
@@ -85,11 +86,12 @@ public class SimpleClimateSensorDisplay extends Div {
     binder.forField(dynamicTitle).bindReadOnly(ClimateSensorData::location);
     binder.forField(trendContainerTemp).bindReadOnly(ClimateSensorData::trendTemperature);
     binder.forField(trendContainerHumidity).bindReadOnly(ClimateSensorData::trendHumidity);
+    binder.forField(dynamicTimePassed).bindReadOnly(ClimateSensorData::updatedAt);
     update(sensorData);
   }
 
   public void update(ClimateSensorData climateSensorData) {
-    binder.setBean(climateSensorData);
+    binder.readBean(climateSensorData);
   }
 
  }
