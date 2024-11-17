@@ -5,6 +5,8 @@ of several smart sensors deployed in your network.
 Next to the sensor overview, Smarthome allows users to create Smartviews.
 Smartviews are customizable views of different sensor display types (e.g. text-only, simple, detailed). 
 
+![Screenshot Smarthome App](images/screen-shot-smarthome-app.png)
+
 ## Sensor Control Center - SCC
 
 The Sensor Control Center provides the user with an overview of available sensors and their type.
