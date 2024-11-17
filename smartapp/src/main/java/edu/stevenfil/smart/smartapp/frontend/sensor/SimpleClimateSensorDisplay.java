@@ -26,7 +26,7 @@ public class SimpleClimateSensorDisplay extends Div {
   private Div temperatureContainer;
   private Div humidityContainer;
 
-  private Div displayTitle;
+  private Div displayHeader;
   private Div displayContent;
   private Div displayFooter;
 
@@ -38,8 +38,8 @@ public class SimpleClimateSensorDisplay extends Div {
     addClassNames("flex", "flex-vertical", "flex-grow");
     addClassName("display-item-small");
 
-    displayTitle = new Div();
-    displayTitle.addClassName("display-title");
+    displayHeader = new Div();
+    displayHeader.addClassName("display-title");
 
     displayContent = new Div();
     displayContent.addClassName("display-content");
@@ -47,18 +47,37 @@ public class SimpleClimateSensorDisplay extends Div {
     displayFooter = new Div();
     displayFooter.addClassName("display-footer");
 
-    add(displayTitle, displayContent, displayFooter);
+    add(displayHeader, displayContent, displayFooter);
 
     var title = new Span("Display Title");
-    displayTitle.add(title);
 
     var dynamicTitle = new DynamicStringValue(title);
 
-    var trendTemp = new Svg(getClass().getResourceAsStream("/static/images/circle-svgrepo-com.svg"));
+    var batteryStatus = new Svg(
+        getClass().getResourceAsStream("/static/images/battery/alt-battery-5-svgrepo-com.svg"));
+    batteryStatus.addClassNames("image-size-m");
+    var dynamicBattery = new DynamicBattery(batteryStatus);
+    Div leftHeaderCell = new Div();
+    leftHeaderCell.addClassName("grid-cell-header");
+
+    Div rightHeaderCell = new Div();
+    rightHeaderCell.addClassName("grid-cell-header");
+
+    Div middleHeaderCell = new Div();
+    middleHeaderCell.addClassName("grid-cell-header");
+
+    middleHeaderCell.add(title);
+    rightHeaderCell.add(batteryStatus);
+
+    displayHeader.add(leftHeaderCell, middleHeaderCell, rightHeaderCell);
+
+    var trendTemp = new Svg(
+        getClass().getResourceAsStream("/static/images/circle-svgrepo-com.svg"));
     trendTemp.addClassName("image-size-s");
     trendTemp.addClassName("svg-color-bright");
 
-    var trendHumidity = new Svg(getClass().getResourceAsStream("/static/images/circle-svgrepo-com.svg"));
+    var trendHumidity = new Svg(
+        getClass().getResourceAsStream("/static/images/circle-svgrepo-com.svg"));
     trendHumidity.addClassName("image-size-s");
     trendHumidity.addClassName("svg-color-bright");
 
@@ -87,6 +106,7 @@ public class SimpleClimateSensorDisplay extends Div {
     binder.forField(trendContainerTemp).bindReadOnly(ClimateSensorData::trendTemperature);
     binder.forField(trendContainerHumidity).bindReadOnly(ClimateSensorData::trendHumidity);
     binder.forField(dynamicTimePassed).bindReadOnly(ClimateSensorData::updatedAt);
+    binder.forField(dynamicBattery).bindReadOnly(ClimateSensorData::battery);
     update(sensorData);
   }
 
@@ -94,4 +114,4 @@ public class SimpleClimateSensorDisplay extends Div {
     binder.readBean(climateSensorData);
   }
 
- }
+}

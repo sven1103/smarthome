@@ -1,3 +1,8 @@
+Sources of various icons used in the application.
+
+# Display icons
+# Special thanks to Noah Jacobus: https://www.svgrepo.com/author/Noah%20Jacobus/
+
 arrow-trend-down-svgrepo-com.svg
 > https://www.svgrepo.com/svg/535165/arrow-trend-down
 
@@ -13,22 +18,21 @@ caret-up-svgrepo-com.svg
 caret-down-svgrepo-com.svg
 > https://www.svgrepo.com/svg/535251/caret-down
 
-battery-0-svgrepo-com.svg
-> https://www.svgrepo.com/svg/514049/battery-0
 
 # Battery
+# Special thanks to Adam Whitcroft: https://www.svgrepo.com/author/Adam%20Whitcroft/
 
-battery-1-svgrepo-com.svg
-> https://www.svgrepo.com/svg/514051/battery-1
+alt-battery-0-svgrepo-com.svg
+> https://www.svgrepo.com/svg/513953/alt-battery-0
 
-battery-2-svgrepo-com.svg
-> https://www.svgrepo.com/svg/514052/battery-2
+alt-battery-2-svgrepo-com.svg
+> https://www.svgrepo.com/svg/513955/alt-battery-2
 
-battery-3-svgrepo-com.svg
-> https://www.svgrepo.com/svg/514053/battery-3
+alt-battery-3-svgrepo-com.svg
+> https://www.svgrepo.com/svg/513956/alt-battery-3
 
-battery-4-svgrepo-com.svg
-> https://www.svgrepo.com/svg/514054/battery-4
+alt-battery-4-svgrepo-com.svg
+> https://www.svgrepo.com/svg/513957/alt-battery-4
 
-battery-5-svgrepo-com.svg
-> https://www.svgrepo.com/svg/514055/battery-5
+alt-battery-5-svgrepo-com.svg
+> https://www.svgrepo.com/svg/513958/alt-battery-5

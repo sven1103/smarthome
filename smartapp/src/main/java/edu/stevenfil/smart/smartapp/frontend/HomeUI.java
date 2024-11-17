@@ -34,7 +34,7 @@ public class HomeUI extends Div {
 
     add(leftColumn, mainColumn, rightColumn);
 
-    UI.getCurrent().setPollInterval(100000);
+    UI.getCurrent().setPollInterval(1000);
 
     setSensorData(service.queryAllSensors());
 

@@ -15,6 +15,9 @@
   --smarthome-font-size-06: 2rem;
   --smarthome-font-size-07: 2.5rem;
   --smarthome-font-size-08: 3.5rem;
+  --smarthome-color-status-ok: #287c01;
+  --smarthome-color-status-warning: #707000;
+  --smarthome-color-status-alert: #830000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -55,9 +58,15 @@ body {
 .display-title {
   color: var(--smarthome-color-dark-font);
   font-size: var(--smarthome-font-size-04);
+  display: grid;
+  grid-template-columns: 1fr 60% 1fr;
+  padding-top: 0.2rem;
+}
+
+.grid-cell-header {
   display: flex;
   justify-content: center;
-  padding-top: 0.2rem;
+  align-items: center;
 }
 
 .display-footer {
@@ -108,6 +117,10 @@ body {
   height: 1rem;
 }
 
+.image-size-m {
+  width: 1.8rem;
+}
+
 .main {
   display: flex;
   justify-content: center;
@@ -128,6 +141,21 @@ body {
 .left-column, .right-column {
   flex: 1;
 }
+
+.status-ok {
+  color: var(--smarthome-color-status-ok);
+}
+
+.status-warning {
+  color: var(--smarthome-color-status-warning);
+
+}
+
+.status-alert {
+  color: var(--smarthome-color-status-alert);
+}
+
+
 
 @media (max-width: 768px) {
 
