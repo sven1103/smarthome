@@ -14,6 +14,7 @@ public class DisplayUnit extends Div {
   public DisplayUnit(String unit) {
     addClassName("font-size-l");
     addClassName("font-subtle-bright");
+    addClassName("fixed-width-01");
     setText(unit);
   }
 

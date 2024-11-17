@@ -12,3 +12,23 @@ caret-up-svgrepo-com.svg
 
 caret-down-svgrepo-com.svg
 > https://www.svgrepo.com/svg/535251/caret-down
+
+battery-0-svgrepo-com.svg
+> https://www.svgrepo.com/svg/514049/battery-0
+
+# Battery
+
+battery-1-svgrepo-com.svg
+> https://www.svgrepo.com/svg/514051/battery-1
+
+battery-2-svgrepo-com.svg
+> https://www.svgrepo.com/svg/514052/battery-2
+
+battery-3-svgrepo-com.svg
+> https://www.svgrepo.com/svg/514053/battery-3
+
+battery-4-svgrepo-com.svg
+> https://www.svgrepo.com/svg/514054/battery-4
+
+battery-5-svgrepo-com.svg
+> https://www.svgrepo.com/svg/514055/battery-5

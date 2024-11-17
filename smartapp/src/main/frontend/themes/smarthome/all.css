@@ -7,15 +7,29 @@
   --smarthome-color-blue-font: #53d9ff;
   --smarthome-color-green-svg: #5cb85c;
   --smarthome-color-red-svg: #b51313;
+  --smarthome-font-size-01: 0.5rem;
+  --smarthome-font-size-02: 0.7rem;
+  --smarthome-font-size-03: 1rem;
+  --smarthome-font-size-04: 1.2rem;
+  --smarthome-font-size-05: 1.5rem;
+  --smarthome-font-size-06: 2rem;
+  --smarthome-font-size-07: 2.5rem;
+  --smarthome-font-size-08: 3.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --lumo-base-color: #121212;
+  }
 }
 
 body {
   font-family: Open Sans, sans-serif;
-  background-color: var(--smarthome-color-background-dark);
+  background-color: var(--smarthome-color-background-dark); !important;
 }
 
 .border-m {
-  border-width: 0.1rem;
+  border-width: 0.2rem;
   border-style: solid;
 }
 
@@ -35,12 +49,12 @@ body {
 }
 
 .display-item-small {
-  max-width: 20rem ;
+  max-width: 18rem ;
 }
 
 .display-title {
   color: var(--smarthome-color-dark-font);
-  font-size: 1.2rem;
+  font-size: var(--smarthome-font-size-04);
   display: flex;
   justify-content: center;
   padding-top: 0.2rem;
@@ -53,7 +67,9 @@ body {
   padding-bottom: 0.2rem;
 }
 
-
+.fixed-width-01 {
+  width: 20px;
+}
 
 .flex {
   display: flex;
@@ -76,7 +92,7 @@ body {
 }
 
 .font-size-xl {
-  font-size: 5rem;
+  font-size: var(--smarthome-font-size-08);
 }
 
 .gap-s {
@@ -103,8 +119,10 @@ body {
 }
 
 .main-column {
-
   width: 800px;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
 }
 
 .left-column, .right-column {
@@ -126,10 +144,14 @@ body {
   .main-column {
     display: flex;
     max-width: 100%; /* Use the full width on smaller screens */
+
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
   .display-item-small {
+    min-width: 300px ;
     max-width: 80% ;
   }
 }

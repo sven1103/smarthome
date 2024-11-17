@@ -4,6 +4,7 @@ import static org.apache.logging.log4j.LogManager.getLogger;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.stevenfil.smart.smartapp.config.Device;
 import edu.stevenfil.smart.smartapp.config.SmartAppConfig;
 import edu.stevenfil.smart.smartapp.config.SmartAppConfig.MqttConfig;
 import edu.stevenfil.smart.smartapp.device.sensor.climate.ClimateSensor;
@@ -29,7 +30,6 @@ public class ApplicationConfig {
 
   private static final Logger log = getLogger(ApplicationConfig.class);
 
-
   @Bean
   public MqttConfig mqttConfig(SmartAppConfig smartAppConfig) {
     return smartAppConfig.mqttConfig();
@@ -37,11 +37,21 @@ public class ApplicationConfig {
 
   @Bean
   public List<ClimateSensor> climateSensors(SmartAppConfig smartAppConfig, SmartAppClient smartAppClient) {
-    var device = smartAppConfig.devices().stream().findFirst().get();
+    var sensors = smartAppConfig.devices().stream().map(ApplicationConfig::build).toList();
+    var mappings = sensors.stream().map(ApplicationConfig::buildMapper).toList();
+    mappings.forEach(smartAppClient::subscribe);
+    return sensors;
+  }
+
+  private static ClimateSensor build(Device device) {
     var climateSensor = new ClimateSensor();
     climateSensor.setLocation(device.getLocation());
     climateSensor.setFriendlyName(device.getFriendlyName());
-    var mapper = new ClimateSensorMapper(device.getFriendlyName(), climateSensor, (String message) -> {
+    return climateSensor;
+  }
+
+  private static ClimateSensorMapper buildMapper(ClimateSensor sensor) {
+    return new ClimateSensorMapper(sensor.getFriendlyName(), sensor, (String message) -> {
       ObjectMapper objectMapper = new ObjectMapper();
       try {
         return objectMapper.readValue(message, TemperatureHumidityData.class);
@@ -50,10 +60,6 @@ public class ApplicationConfig {
         return new TemperatureHumidityData(0f, 0f, 0f, 0);
       }
     });
-    smartAppClient.subscribe(mapper);
-    var sensors = new ArrayList<ClimateSensor>();
-    sensors.add(climateSensor);
-    return sensors;
   }
 
 }

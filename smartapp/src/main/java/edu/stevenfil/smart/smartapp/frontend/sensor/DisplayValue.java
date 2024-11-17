@@ -13,7 +13,7 @@ public class DisplayValue extends Div {
 
   public DisplayValue(String value) {
     addClassName("font-color-blue");
-    addClassName("font-xl");
+    addClassName("font-size-xl");
     setText(value);
   }
 
