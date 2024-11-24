@@ -28,7 +28,7 @@
 
 body {
   font-family: Open Sans, sans-serif;
-  background-color: var(--smarthome-color-background-dark); !important;
+  background-color: var(--smarthome-color-background-dark);
 }
 
 .border-m {
